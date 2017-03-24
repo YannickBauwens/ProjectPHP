@@ -9,5 +9,9 @@
 </head>
 <body>
     <h1>IMDterest</h1>
+
+    </div>
+        <a href="includes/logout.inc.php">Log out</a>
+    </div>
 </body>
 </html>
