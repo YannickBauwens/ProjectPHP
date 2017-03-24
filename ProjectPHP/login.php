@@ -44,6 +44,13 @@
         <input type="password" name="password" id="password">
 
         <button type="submit">Login</button>
+
+        <?php
+        if( isset($error) ) {
+            echo "<p class='error'>$error</p>";
+        }
+
+        ?>
     </form>
 
 </body>
