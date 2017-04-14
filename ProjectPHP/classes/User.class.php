@@ -104,4 +104,25 @@
             }
         }
 
+        public function checkIfUserExists(){
+            $db = new Db();
+            $conn = $db->connect();
+            $data = $conn->query("SELECT * FROM users WHERE id = ". $this->Id);
+            if($data->rowCount() == 0){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        
+        public function deleteAccount(){
+
+            $conn = new PDO('mysql:host=localhost;dbname=imdterest', "root", "");
+            
+            $statement = $conn->prepare("DELETE FROM users WHERE id = ?");
+            $statement->execute(array($this->Id));
+            session_destroy();
+            header("Location: index.php");
+        }
+
     }
