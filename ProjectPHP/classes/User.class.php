@@ -1,6 +1,6 @@
 <?php
 
-    include_once ("includes/db.inc.php");
+    include_once ("../includes/db.inc.php");
 
     class User{
         private $m_sFirstname;
