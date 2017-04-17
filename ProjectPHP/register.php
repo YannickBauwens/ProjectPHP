@@ -5,7 +5,6 @@
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
-        $username = $_POST['username'];
         $password = $_POST['password'];
 
         if ( !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen(trim($firstname)) === 0 || strlen(trim($lastname)) === 0
@@ -25,7 +24,6 @@
             $user->setMSFirstname($firstname);
             $user->setMSLastname($lastname);
             $user->setMSEmail($email);
-            $user->setMSUsername($username);
             $user->setMSPassword($password);
             $user->Register();
 
@@ -66,9 +64,6 @@
 
         <label for="email">email</label>
         <input type="text" name="email" id="email">
-
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
 
         <label for="password">Password</label>
         <input type="password" name="password" id="password">

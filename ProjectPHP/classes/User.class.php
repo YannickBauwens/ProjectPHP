@@ -6,7 +6,6 @@
         private $m_sFirstname;
         private $m_sLastname;
         private $m_sEmail;
-        private $m_sUsername;
         private $m_sPassword;
 
         public function getMSFirstname()
@@ -39,16 +38,6 @@
             $this->m_sEmail = $m_sEmail;
         }
 
-        public function getMSUsername()
-        {
-            return $this->m_sUsername;
-        }
-
-        public function setMSUsername($m_sUsername)
-        {
-            $this->m_sUsername = $m_sUsername;
-        }
-
         public function getMSPassword()
         {
             return $this->m_sPassword;
@@ -62,12 +51,11 @@
         public function Register(){
             global $conn;
 
-            $statement = $conn->prepare("INSERT INTO User(firstname, lastname, email, username, password) 
-                                         VALUES (:firstname, :lastname, :email, :username, :password)");
+            $statement = $conn->prepare("INSERT INTO User(firstname, lastname, email, password) 
+                                         VALUES (:firstname, :lastname, :email, :password)");
             $statement->bindValue(":firstname", $this->getMSFirstname());
             $statement->bindValue(":lastname", $this->getMSLastname());
             $statement->bindValue(":email", $this->getMSEmail());
-            $statement->bindValue(":username", $this->getMSUsername());
             $statement->bindValue(":password", $this->getMSPassword());
 
             $options = [

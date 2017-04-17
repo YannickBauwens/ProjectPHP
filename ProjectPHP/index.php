@@ -20,8 +20,6 @@ $topic->getFeed();
 <body>
     <h1>IMDterest</h1>
 
-    <div></div>
-
     </div>
         <a href="includes/logout.inc.php">Log out</a>
     </div>
