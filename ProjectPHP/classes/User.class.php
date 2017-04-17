@@ -102,15 +102,5 @@
                 return true;
             }
         }
-        
-        public function deleteAccount(){
-
-            $conn = new PDO('mysql:host=localhost;dbname=imdterest', "root", "");
-            
-            $statement = $conn->prepare("DELETE FROM users WHERE id = ?");
-            $statement->execute(array($this->Id));
-            session_destroy();
-            header("Location: index.php");
-        }
 
     }
