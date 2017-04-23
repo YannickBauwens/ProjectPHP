@@ -1,22 +1,17 @@
 <?php
-      
-    session_start();
 
-    if(empty($_SESSION['user'])){
-        header("Location: index.php");
+    include_once ("includes/no-session.inc.php");
+
+    spl_autoload_register(function ($class) {
+        include_once 'classes/' . $class . '.class.php';
+    });
+
+    $user = new User();
+    $user->Id = $_GET['id'];
+    if($user->checkIfUserExists()){
+        $user->getDataFromDatabase();
     }else{
-
-        spl_autoload_register(function ($class) {
-            include_once '../classes/' . $class . '.class.php';
-        });   
-
-        $user = new User();
-        $user->Id = $_GET['id'];
-        if($user->checkIfUserExists()){
-            $user->getDataFromDatabase();
-        }else{
-            header("Location: 404.php");
-        }
+        header("Location: 404.php");
     }
 
 ?>
@@ -38,7 +33,7 @@
 
                    <div>
                         <h1 class="h1Profile"><?php echo $user->firstname . " " . $user->lastname; ?></h1>
-                        <h3 class="h3Profile"><?php echo $user->username; ?></h2>
+                        <h2 class="h3Profile"><?php echo $user->username; ?></h2>
                         <form action="settings.php" class="formProf">
                             <input type="submit" value="Edit profile">
                         </form>

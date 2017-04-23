@@ -1,14 +1,10 @@
 <?php
-    
-    session_start();
-    if(empty($_SESSION['user']))
-    {
-        header("Location: index.php");
-    }
+
+    include_once ("includes/no-session.inc.php");
 
 	//Include all classes
 	spl_autoload_register(function ($class) {
-		include '../classes/' . $class . '.class.php';
+		include 'classes/' . $class . '.class.php';
 	});
 
     $user = new User(); 

@@ -18,11 +18,10 @@ $topic->getFeed();
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>IMDterest</h1>
 
-    </div>
-        <a href="includes/logout.inc.php">Log out</a>
-    </div>
+    <?php include_once("includes/nav.inc.php"); ?>
+
+    <h1>IMDterest</h1>
 
     <?php foreach( $topic as $post ): ?>
         <div class="topics" >
