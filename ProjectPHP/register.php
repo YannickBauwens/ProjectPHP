@@ -1,24 +1,21 @@
 <?php
-    include_once ("classes/User.class.php");
+    include_once("classes/User.class.php");
 
-    if( !empty( $_POST ) ){
+    if (!empty($_POST)) {
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if ( !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen(trim($firstname)) === 0 || strlen(trim($lastname)) === 0 || strlen(trim($password)) === 0 )
-        {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen(trim($firstname)) === 0 || strlen(trim($lastname)) === 0 || strlen(trim($password)) === 0) {
             $errorMessage = "Please fill in all fields.";
             $error = true;
-        }
-        else{
+        } else {
             $errorMessage = "";
             $error = false;
         }
 
-        if( $error == false)
-        {
+        if ($error == false) {
             $user = new User();
             $user->setMSFirstname($firstname);
             $user->setMSLastname($lastname);
@@ -49,7 +46,7 @@
 
         <div>
             <?php
-            if( isset($error) ) {
+            if (isset($error)) {
                 echo "<p class='error'>$errorMessage</p>";
             }
             ?>

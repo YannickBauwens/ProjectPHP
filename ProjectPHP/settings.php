@@ -1,25 +1,24 @@
 <?php
 
-    include_once ("includes/no-session.inc.php");
+    include_once("includes/no-session.inc.php");
 
-	//Include all classes
-	spl_autoload_register(function ($class) {
-		include 'classes/' . $class . '.class.php';
-	});
+    //Include all classes
+    spl_autoload_register(function ($class) {
+        include 'classes/' . $class . '.class.php';
+    });
 
-    $user = new User(); 
+    $user = new User();
     $user->getDataFromDatabase($_SESSION['user']);
 
-    if(!empty($_POST)){
-
-        if(!isset($_POST['private'])){
+    if (!empty($_POST)) {
+        if (!isset($_POST['private'])) {
             $_POST['private'] = null;
         }
 
         $user->changeProfile($_SESSION['user'], $_POST['email'], $_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['private'], $_FILES['profilePicture']);
     }
 
-    if(!empty($_GET)){
+    if (!empty($_GET)) {
         $user->deleteAccount();
     }
 
@@ -44,7 +43,7 @@
                 <div class="alert alert-warning save-warning" role="alert">
                     You have unsaved changes. Be sure to save this form before leaving.
                 </div>
-                <?php if(!empty($_POST) && $user->showFeedback()): ?>
+                <?php if (!empty($_POST) && $user->showFeedback()): ?>
                     <?php echo $user->showFeedback(); ?>
                 <?php endif; ?>
     
@@ -71,7 +70,7 @@
 
                     <h2>account onzichtbaar maken voor anderen?</h2>
 
-                    <?php if($user->Private): ?>
+                    <?php if ($user->Private): ?>
                         <input type="checkbox" name="private" checked> Private account
                     <?php else: ?>
                         <input type="checkbox" name="private"> Private account

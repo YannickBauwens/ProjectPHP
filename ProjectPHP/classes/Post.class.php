@@ -1,7 +1,8 @@
 <?php
-include_once ("includes/db.inc.php");
+include_once("includes/db.inc.php");
 
-class Post{
+class Post
+{
     private $m_sImage;
     private $m_sUrl;
     private $m_sDescription;
@@ -36,7 +37,8 @@ class Post{
         $this->m_sDescription = $m_sDescription;
     }
 
-    public function saveUrl($m_sUrl){
+    public function saveUrl($m_sUrl)
+    {
         global $conn;
         require 'simple_html_dom.php';
         $html  = file_get_html($m_sUrl);
@@ -48,16 +50,16 @@ class Post{
         $statement->bindValue(":description", $html->find('img', 0));
     }
 
-    public function savePost(){
+    public function savePost()
+    {
         global $conn;
         $statement = $conn->prepare("insert into posts (image, url, description)
                                      values (:image, :url, :description)");
         $statement->bindValue(":image", $this->getMSImage());
         $statement->bindValue(":url", $this->getMSUrl());
         $statement->bindValue(":description", $this->getMSDescription());
-        if ($statement->execute()){
+        if ($statement->execute()) {
             header('Location: index.php');
         }
     }
-
 }

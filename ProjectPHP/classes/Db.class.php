@@ -1,21 +1,16 @@
 <?php
 
-	class Db
-	{
-		public function connect()
-		{
-			try {
-              
-				$conn = new PDO('mysql:host=localhost;dbname=IMDterest', "root", "");
-				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
-				return $conn;
-
-			} catch(PDOException $e) {
-			    echo 'ERROR: ' . $e->getMessage();
-			}
-            
-		}
-	}
-
-?>
+    class Db
+    {
+        public function connect()
+        {
+            try {
+                $conn = new PDO('mysql:host=localhost;dbname=IMDterest', "root", "");
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+                return $conn;
+            } catch (PDOException $e) {
+                echo 'ERROR: ' . $e->getMessage();
+            }
+        }
+    }

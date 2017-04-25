@@ -1,7 +1,7 @@
 <?php
 
 include_once("classes/topics.class.php");
-include_once ("includes/no-session.inc.php");
+include_once("includes/no-session.inc.php");
 
 $topic = new Topic();
 $topic->getFeed();
@@ -23,7 +23,7 @@ $topic->getFeed();
 
     <h1>IMDterest</h1>
 
-    <?php foreach( $topic as $post ): ?>
+    <?php foreach ($topic as $post): ?>
         <div class="topics" >
             <p><?php echo $post['name']; ?></p><br>
         </div>

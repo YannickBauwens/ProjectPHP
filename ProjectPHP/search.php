@@ -2,7 +2,7 @@
 include_once('includes/no-session.inc.php');
 include_once('includes/db.inc.php');
 
-    if(isset($_GET['txtSearch'])) {
+    if (isset($_GET['txtSearch'])) {
         $searchKeyword = $_GET['txtSearch'];
         $results = array();
         $statement = $conn->prepare("SELECT *
@@ -12,15 +12,12 @@ include_once('includes/db.inc.php');
         $statement->bindValue(':keywords', '%' . $searchKeyword . '%');
         $statement->execute();
 
-        if($statement->rowCount() >= 1){
+        if ($statement->rowCount() >= 1) {
             $results = $statement->fetchAll();
             $countPosts = $statement->rowCount();
-        }
-        else
-        {
+        } else {
             $errorMessage = "No matching results with: ".$_GET['txtSearch'];
         }
-
     }
 
 ?><!doctype html>
@@ -40,7 +37,7 @@ include_once('includes/db.inc.php');
 
 <div>
     <div>
-        <?php foreach($results as $result): ?>
+        <?php foreach ($results as $result): ?>
             <p><?php echo $result['image']; ?></p>
         <?php endforeach;?>
     </div>

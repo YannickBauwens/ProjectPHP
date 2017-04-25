@@ -1,6 +1,6 @@
 <?php
 
-    include_once ("includes/no-session.inc.php");
+    include_once("includes/no-session.inc.php");
 
     spl_autoload_register(function ($class) {
         include_once 'classes/' . $class . '.class.php';
@@ -8,9 +8,9 @@
 
     $user = new User();
     $user->Id = $_GET['id'];
-    if($user->checkIfUserExists()){
+    if ($user->checkIfUserExists()) {
         $user->getDataFromDatabase();
-    }else{
+    } else {
         header("Location: 404.php");
     }
 

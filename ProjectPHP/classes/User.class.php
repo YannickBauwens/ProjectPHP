@@ -1,8 +1,9 @@
 <?php
 
-    include_once ("includes/db.inc.php");
+    include_once("includes/db.inc.php");
 
-    class User{
+    class User
+    {
         private $m_sFirstname;
         private $m_sLastname;
         private $m_sEmail;
@@ -48,7 +49,8 @@
             $this->m_sPassword = $m_sPassword;
         }
 
-        public function Register(){
+        public function Register()
+        {
             global $conn;
 
             $statement = $conn->prepare("INSERT INTO User(firstname, lastname, email, password) 
@@ -68,39 +70,37 @@
             $_SESSION['email'] = $this->getMSEmail() ;
         }
 
-        public function Login(){
+        public function Login()
+        {
             global $conn;
 
             $p_password = $this->getMSPassword();
 
             $statement = $conn->prepare("SELECT * FROM User where email = :email LIMIT 1");
-            $statement->execute( array( ":email"=>$this->getMSEmail() ) );
+            $statement->execute(array( ":email"=>$this->getMSEmail() ));
 
-            if($statement->rowCount() == 1)
-            {
+            if ($statement->rowCount() == 1) {
                 $currentUser = $statement->fetch(PDO::FETCH_ASSOC);
                 $hash = $currentUser['password'];
                 $_SESSION['email'] = $currentUser['email'];
 
-                if ( password_verify($p_password, $hash)) {
+                if (password_verify($p_password, $hash)) {
                     return true;
-                }
-                else
-                {
+                } else {
                     return false;
                 }
             }
         }
 
-        public function checkIfUserExists(){
+        public function checkIfUserExists()
+        {
             $db = new Db();
             $conn = $db->connect();
             $data = $conn->query("SELECT * FROM users WHERE id = ". $this->Id);
-            if($data->rowCount() == 0){
+            if ($data->rowCount() == 0) {
                 return false;
-            }else{
+            } else {
                 return true;
             }
         }
-
     }

@@ -2,22 +2,22 @@
 include_once('includes/no-session.inc.php');
 include_once('classes/Post.class.php');
 
-if(!empty($_POST)){
-        $image = $_POST['image'];
-        $url = $_POST['url'];
-        $desc = $_POST['desc'];
+if (!empty($_POST)) {
+    $image = $_POST['image'];
+    $url = $_POST['url'];
+    $desc = $_POST['desc'];
 
-        if(!empty($_POST['image'])){
-            $p = new Post();
-            $p->setMSImage($image);
-            $p->setMSDescription($desc);
-            $p->savePost();
-        }else if(!empty($_POST['url'])){
-            $p = new Post();
-            $p->setMSDescription($desc);
-            $p->saveUrl($url);
-            $p->savePost();
-        }
+    if (!empty($_POST['image'])) {
+        $p = new Post();
+        $p->setMSImage($image);
+        $p->setMSDescription($desc);
+        $p->savePost();
+    } elseif (!empty($_POST['url'])) {
+        $p = new Post();
+        $p->setMSDescription($desc);
+        $p->saveUrl($url);
+        $p->savePost();
+    }
 }
 ?>
 <!DOCTYPE html>

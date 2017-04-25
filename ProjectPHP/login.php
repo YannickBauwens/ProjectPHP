@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    include_once ("classes/User.class.php");
+    include_once("classes/User.class.php");
 
-    if( !empty( $_POST ) ){
+    if (!empty($_POST)) {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -12,12 +12,10 @@
         $user->setMSPassword($password);
         $user->Login();
 
-        if($user->Login()){
+        if ($user->Login()) {
             $_SESSION['email'] = $email;
             header('Location: index.php');
-        }
-        else
-        {
+        } else {
             $error = "Username or password is incorrect.";
         }
     }
@@ -46,7 +44,7 @@
         <button type="submit">Login</button>
 
         <?php
-        if( isset($error) ) {
+        if (isset($error)) {
             echo "<p class='error'>$error</p>";
         }
 
