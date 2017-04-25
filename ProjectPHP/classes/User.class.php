@@ -9,42 +9,42 @@
         private $m_sEmail;
         private $m_sPassword;
 
-        public function getMSFirstname()
+        public function getFirstname()
         {
             return $this->m_sFirstname;
         }
 
-        public function setMSFirstname($m_sFirstname)
+        public function setFirstname($m_sFirstname)
         {
             $this->m_sFirstname = $m_sFirstname;
         }
 
-        public function getMSLastname()
+        public function getLastname()
         {
             return $this->m_sLastname;
         }
 
-        public function setMSLastname($m_sLastname)
+        public function setLastname($m_sLastname)
         {
             $this->m_sLastname = $m_sLastname;
         }
 
-        public function getMSEmail()
+        public function getEmail()
         {
             return $this->m_sEmail;
         }
 
-        public function setMSEmail($m_sEmail)
+        public function setEmail($m_sEmail)
         {
             $this->m_sEmail = $m_sEmail;
         }
 
-        public function getMSPassword()
+        public function getPassword()
         {
             return $this->m_sPassword;
         }
 
-        public function setMSPassword($m_sPassword)
+        public function setPassword($m_sPassword)
         {
             $this->m_sPassword = $m_sPassword;
         }
@@ -55,29 +55,29 @@
 
             $statement = $conn->prepare("INSERT INTO User(firstname, lastname, email, password) 
                                          VALUES (:firstname, :lastname, :email, :password)");
-            $statement->bindValue(":firstname", $this->getMSFirstname());
-            $statement->bindValue(":lastname", $this->getMSLastname());
-            $statement->bindValue(":email", $this->getMSEmail());
-            $statement->bindValue(":password", $this->getMSPassword());
+            $statement->bindValue(":firstname", $this->getFirstname());
+            $statement->bindValue(":lastname", $this->getLastname());
+            $statement->bindValue(":email", $this->getEmail());
+            $statement->bindValue(":password", $this->getPassword());
 
             $options = [
                 'cost'=> 12
             ];
-            $password = password_hash($this->getMSPassword(), PASSWORD_DEFAULT, $options);
+            $password = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
             $statement->bindValue(":password", $password);
             $statement->execute();
 
-            $_SESSION['email'] = $this->getMSEmail() ;
+            $_SESSION['email'] = $this->getEmail() ;
         }
 
         public function Login()
         {
             global $conn;
 
-            $p_password = $this->getMSPassword();
+            $p_password = $this->getPassword();
 
             $statement = $conn->prepare("SELECT * FROM User where email = :email LIMIT 1");
-            $statement->execute(array( ":email"=>$this->getMSEmail() ));
+            $statement->execute(array( ":email"=>$this->getEmail() ));
 
             if ($statement->rowCount() == 1) {
                 $currentUser = $statement->fetch(PDO::FETCH_ASSOC);

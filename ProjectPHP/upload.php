@@ -9,12 +9,12 @@ if (!empty($_POST)) {
 
     if (!empty($_POST['image'])) {
         $p = new Post();
-        $p->setMSImage($image);
-        $p->setMSDescription($desc);
+        $p->setImage($image);
+        $p->setDescription($desc);
         $p->savePost();
     } elseif (!empty($_POST['url'])) {
         $p = new Post();
-        $p->setMSDescription($desc);
+        $p->setDescription($desc);
         $p->saveUrl($url);
         $p->savePost();
     }

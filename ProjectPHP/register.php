@@ -17,10 +17,10 @@
 
         if ($error == false) {
             $user = new User();
-            $user->setMSFirstname($firstname);
-            $user->setMSLastname($lastname);
-            $user->setMSEmail($email);
-            $user->setMSPassword($password);
+            $user->setFirstname($firstname);
+            $user->setLastname($lastname);
+            $user->setEmail($email);
+            $user->setPassword($password);
             $user->Register();
 
             header('Location: login.php');

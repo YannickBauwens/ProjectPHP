@@ -8,8 +8,8 @@
         $password = $_POST['password'];
 
         $user = new User();
-        $user->setMSEmail($email);
-        $user->setMSPassword($password);
+        $user->setEmail($email);
+        $user->setPassword($password);
         $user->Login();
 
         if ($user->Login()) {
