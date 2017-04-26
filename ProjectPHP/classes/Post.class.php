@@ -53,10 +53,10 @@ class Post
     public function savePost()
     {
         global $conn;
-        $statement = $conn->prepare("insert into posts (image, url, description)
-                                     values (:image, :url, :description)");
+        $statement = $conn->prepare("insert into posts (image, description)
+                                     values (:image, :description)");
         $statement->bindValue(":image", $this->getImage());
-        $statement->bindValue(":url", $this->getUrl());
+        //$statement->bindValue(":url", $this->getUrl());
         $statement->bindValue(":description", $this->getDescription());
         if ($statement->execute()) {
             header('Location: index.php');
