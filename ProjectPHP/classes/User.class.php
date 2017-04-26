@@ -83,6 +83,8 @@
                 $currentUser = $statement->fetch(PDO::FETCH_ASSOC);
                 $hash = $currentUser['password'];
                 $_SESSION['email'] = $currentUser['email'];
+                $_SESSION['id'] = $currentUser['id'];
+
 
                 if (password_verify($p_password, $hash)) {
                     return true;
