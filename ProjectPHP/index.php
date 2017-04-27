@@ -33,7 +33,7 @@ $topic->getFeed();
             <p><?php echo $post['name']; ?></p><br>
         </div>
     <?php endforeach; ?>
-    
+
 
 
 

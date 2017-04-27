@@ -24,7 +24,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="settings.php">Settings</a></li>
-                        <li><a href="logout.inc.php">Log out</a></li>
+                        <li><a href="includes/logout.inc.php">Log out</a></li>
                    </ul>
                 </li>
             </ul>

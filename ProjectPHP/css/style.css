@@ -1,7 +1,7 @@
 .topics{
     height: 50px;
     width: 50px;
-    color: white;
+    color: black;
     background-color: grey;
 }
 *
@@ -42,14 +42,14 @@ legend
 }
 
 form h1{
-    color: white;
+    color: black;
     margin-left: 200px;
     margin-right: 100px;
 
 }
 
 h2{
-    color: white;
+    color: black;
 }
 
 
@@ -59,7 +59,7 @@ div
     width: 300%;
 }
 
-.links{color: white;}
+.links{color: black;}
 
 .email
 {
@@ -73,7 +73,7 @@ label
     margin-top: 0.5em;
     padding-top: 0.5em;
     padding-left: 7.5%;
-    color: white;
+    color: black;
 }
 
 .email label
@@ -85,7 +85,7 @@ input[type=text], input[type=email], input[type=password]
 {
     width: 90%;
     background-color: transparent;
-    color: white;
+    color: black;
     padding: 0.5em 0 1em 0.5em;
     margin: 0.5em 5% 1.25em 6%;
     border: 0;
@@ -110,7 +110,7 @@ button
     margin-bottom: 1em;
     background-color:transparent;
     border-radius:40px;
-    color: white;
+    color: dodgerblue;
     padding: 0.5em 1.5em;
     border: 1px solid white;
     font-size: 1em;
@@ -122,7 +122,7 @@ button:hover
     cursor: pointer;
 }
 p{
-    color: white;
+    color: black;
     text-align: center;
     margin:-1px;
 
