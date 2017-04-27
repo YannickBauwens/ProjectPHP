@@ -28,27 +28,26 @@ $topic->getFeed();
     <?php include_once("includes/nav.inc.php"); ?>
     <?php include_once ("classes/Post.class.php");?>
 
+
     <h1>IMDterest</h1>
 
     <div class="col-lg-3 col-md-4 col-xs-6 thumb" >';
 
 
-        echo' <div class="thumbnail" >';
+       <?php echo' <div class="thumbnail" >';
             echo'<a id = "user" href = "" >';
                 echo'  <p > user </p >';
                 echo'</a >';
 
-            echo'<a href = "detail.php" >';//e
+            echo'<a href = "upload.php" ->';//e
                 if(!empty($row['link'])){
                 echo "<img src='images/posts/' >";
                 } else{
                 echo "<img src='images/posts/5_1493236906.jpeg' >";
                 }
 
-
-                echo'</a >';
             echo'<div class="caption post-content" >';
-                echo'<div class="reactions" >';
+                    echo'<div class="reactions" >';
                     echo' <p id = "likes" ><span class="glyphicon glyphicon-thumbs-up" aria - hidden = "true" ></span > 15</p >';
                     echo' <p id = "dislikes" ><span class="glyphicon glyphicon-thumbs-down" aria - hidden = "true" ></span > 15</p >';
                     echo '</div >';
@@ -65,7 +64,7 @@ $topic->getFeed();
 
 
 
-        echo'</div >';
+        echo'</div >';?>
 
 
     <?php foreach ($topic as $post): ?>
