@@ -1,10 +1,20 @@
 <?php
 include_once("includes/db.inc.php");
 
-class Topic
+class Feed
 {
+    private $m_iUserID;
     private $m_sResult;
 
+    public function getUserID()
+    {
+        return $this->m_iUserID;
+    }
+
+    public function setUserID($m_iUserID)
+    {
+        $this->m_iUserID = $m_iUserID;
+    }
 
     public function getResult()
     {
@@ -16,11 +26,11 @@ class Topic
         $this->m_sResult = $m_sResult;
     }
 
-    public function getTopic()
+    public function getFeed()
     {
         global $conn;
 
-        $statement = $conn->prepare("select * from topics limit 20");
+        $statement = $conn->prepare("select * from posts limit 20");
         $statement->execute();
 
         $this->m_sResult = $statement->fetchAll();

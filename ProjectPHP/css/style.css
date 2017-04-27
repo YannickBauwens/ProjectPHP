@@ -128,3 +128,8 @@ p{
 
 }
 p a{color:white;}
+
+.feed{
+    width: 100px;
+    height: 100px;
+}

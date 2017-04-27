@@ -3,7 +3,6 @@ include_once('includes/no-session.inc.php');
 include_once('classes/Post.class.php');
 
 if (!empty($_POST)) {
-
     if (!empty($_FILES["fileToUpload"])) {
         $description = $_POST['description'];
 
@@ -11,21 +10,9 @@ if (!empty($_POST)) {
 
         $post->setDescription($description);
         $post->savePost($_SESSION['id']);
-
-
-
-
-
-    } else{
+    } else {
         echo "Kies een foto om te uploaden";
-
     }
-
-
-
-
-
-
 }
 
 ?>
