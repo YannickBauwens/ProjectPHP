@@ -81,14 +81,14 @@ class Post
             $statement->bindValue(":fk_userid", $p_iUserid);
 
            if($statement->execute()) {
-               echo "Je post is met succes geuploqd";
+               header('Location: index.php');
            }  else {
-               echo "Helqqs er ging iets mis";
+               echo "Help er ging iets mis";
            }
 
         } else
          {
-          echo "Helqqs er ging iets mis";
+          echo "Help er ging iets mis";
         }
 
 
