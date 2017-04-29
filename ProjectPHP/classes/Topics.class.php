@@ -4,7 +4,7 @@ include_once("includes/db.inc.php");
 class Topic
 {
     private $m_sResult;
-
+    private $m_sTopic;
 
     public function getResult()
     {
@@ -17,6 +17,28 @@ class Topic
     }
 
     public function getTopic()
+    {
+        return $this->m_sTopic;
+    }
+
+    public function setTopic($m_sTopic)
+    {
+        $this->m_sTopic = $m_sTopic;
+    }
+
+    public function saveTopic()
+    {
+        global $conn;
+
+        $statement = $conn->prepare("insert into user(topics) values (:topics)");
+        $statement->bindValue(':topics', $this->getTopic());
+        $statement->execute();
+
+        $this->m_sResult = $statement->fetchAll();
+        return $this->m_sTopic;
+    }
+
+    public function readTopic()
     {
         global $conn;
 

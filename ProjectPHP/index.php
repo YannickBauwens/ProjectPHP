@@ -1,9 +1,17 @@
 <?php
 
-include_once("classes/topics.class.php");
 include_once("includes/no-session.inc.php");
 include_once("classes/Feed.class.php");
 include_once("classes/User.class.php");
+
+/*session_start();
+
+if (!isset($_SESSION['FirstVisit'])) {
+    $_SESSION['FirstVisit'] = 1;
+    header("Location: topics.php");
+} else {
+    header("Location: index.php");
+}*/
 
 $email = $_SESSION['email'];
 $feed = new Feed();

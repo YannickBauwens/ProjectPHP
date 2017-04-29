@@ -12,7 +12,7 @@
         </div>
 
 
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left" action="search.php">
                 <div class="form-group">
                     <input id="txtSearch" name="txtSearch" type="text" class="form-control" placeholder="Search">
                 </div>
