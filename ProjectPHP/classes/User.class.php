@@ -67,7 +67,7 @@
             $statement->bindValue(":password", $password);
             $statement->execute();
 
-            $_SESSION['email'] = $this->getEmail() ;
+            $_SESSION['email'] = $this->getEmail();
         }
 
         public function Login()
@@ -80,6 +80,7 @@
             $statement->execute(array( ":email"=>$this->getEmail() ));
 
             if ($statement->rowCount() == 1) {
+                echo "inloggen lukt";
                 $currentUser = $statement->fetch(PDO::FETCH_ASSOC);
                 $hash = $currentUser['password'];
                 $_SESSION['email'] = $currentUser['email'];
@@ -91,6 +92,8 @@
                 } else {
                     return false;
                 }
+            }else{
+                echo "inloggen kan niet";
             }
         }
 
