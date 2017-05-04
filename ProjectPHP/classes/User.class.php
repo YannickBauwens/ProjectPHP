@@ -92,7 +92,7 @@
                 } else {
                     return false;
                 }
-            }else{
+            } else {
                 echo "inloggen kan niet";
             }
         }

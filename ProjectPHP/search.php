@@ -43,7 +43,9 @@ $email = $_SESSION['email'];
 
 <?php include_once("includes/nav.inc.php"); ?>
 
-<p><?php if(isset($$errorMessage)) echo $errorMessage; ?></p>
+<p><?php if (isset($$errorMessage)) {
+    echo $errorMessage;
+} ?></p>
 
 <?php foreach ($results as $result): ?>
     <div class="col-lg-3 col-md-4 col-xs-6 thumb" >

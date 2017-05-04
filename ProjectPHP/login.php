@@ -19,7 +19,6 @@
             $error = "Username or password is incorrect.";
         }
     }
-    var_dump($user);
 
 ?><!doctype html>
 <html lang="en">

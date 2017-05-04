@@ -43,9 +43,9 @@ $feed->getFeed();
     <div class="col-lg-3 col-md-4 col-xs-6 thumb" >
 
         <div class="thumbnail" >
-            <a id="user" href="index.php"><?php echo $email; ?></a >
+            <a id="user" href="profile.php"><?php echo $email; ?></a >
 
-            <a href="index.php"><img src="<?php echo $f['image'] ?>" alt="img"></a>
+            <a href="postDetail.php"><img src="<?php echo $f['image'] ?>" alt="img"></a>
 
             <div class="caption post-content" >
                 <div class="reactions" >
