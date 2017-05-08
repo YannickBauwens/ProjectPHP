@@ -2,6 +2,7 @@
 include_once('includes/no-session.inc.php');
 include_once('classes/Post.class.php');
 
+
 if (!empty($_POST)) {
     if (!empty($_FILES["fileToUpload"])) {
         $description = $_POST['description'];
