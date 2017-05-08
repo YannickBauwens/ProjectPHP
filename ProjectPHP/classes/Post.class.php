@@ -69,7 +69,7 @@ class Post
         //bestaande php functie, 2 paramaters:
         // parameter 1 = de filenaam, tmp file name in de var files
         //parameter =strning naar db. locatie waar en hoe het moet opgeslagen woorden dus
-        if(move_uploaded_file($tmp_name, $stringToDB) ) {
+        if (move_uploaded_file($tmp_name, $stringToDB)) {
             global $conn;
             $statement = $conn->prepare("insert into posts (image, description, FK_userid)
                                      values (:image, :description, :fk_userid)");
@@ -80,18 +80,15 @@ class Post
             //in upload.php wordt de user id uit de session gehaaldd en meegegeven met de savepos functie als parameter
             $statement->bindValue(":fk_userid", $p_iUserid);
 
-           if($statement->execute()) {
-               header("Location: index.php");
-           }  else {
-               echo "Helqqs er ging iets mis";
-           }
 
-        } else
-         {
-          echo "Helqqs er ging iets mis";
+            if ($statement->execute()) {
+                echo "Je post is met succes geuploqd";
+            } else {
+                echo "Helaas er ging iets mis";
+            }
+        } else {
+            echo "Helaas er ging iets mis";
         }
-
-
     }
     // url kolom mag NULL zijn, moest ik hem toevoegen haha
 }

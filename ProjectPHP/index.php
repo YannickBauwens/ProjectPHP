@@ -1,10 +1,21 @@
 <?php
 
-include_once("classes/topics.class.php");
 include_once("includes/no-session.inc.php");
+include_once("classes/Feed.class.php");
+include_once("classes/User.class.php");
 
-$topic = new Topic();
-$topic->getFeed();
+/*session_start();
+
+if (!isset($_SESSION['FirstVisit'])) {
+    $_SESSION['FirstVisit'] = 1;
+    header("Location: topics.php");
+} else {
+    header("Location: index.php");
+}*/
+
+$email = $_SESSION['email'];
+$feed = new Feed();
+$feed->getFeed();
 
 ?><!doctype html>
 <html lang="en">
@@ -27,15 +38,29 @@ $topic->getFeed();
 
     <h1>IMDterest</h1>
 
-    <?php foreach ($topic as $post): ?>
-        <div class="topics" >
-            <p><?php echo $post['name']; ?></p><br>
-        </div>
+    <?php foreach ($feed->getFeed() as $f): ?>
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb" >
+
+        <div class="thumbnail" >
+            <a id="user" href="profile.php"><?php echo $email; ?></a >
+
+            <a href="postDetail.php"><img src="<?php echo $f['image'] ?>" alt="img"></a>
+
+            <div class="caption post-content" >
+                <div class="reactions" >
+                    <p id = "likes" ><span class="glyphicon glyphicon-thumbs-up" aria - hidden = "true" ></span > 15</p >
+                    <p id = "dislikes" ><span class="glyphicon glyphicon-thumbs-down" aria - hidden = "true" ></span > 15</p >
+                </div >
+
+                <p><?php echo $f['description']; ?></p>
+
+            </div>
+
+        </div >
+
+    </div >
     <?php endforeach; ?>
-
-
-
-
+    
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
