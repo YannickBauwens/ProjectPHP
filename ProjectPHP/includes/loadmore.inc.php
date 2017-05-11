@@ -7,4 +7,3 @@ $statement->execute();
 $result = serialize($statement->fetch());
 
 echo $result;
-

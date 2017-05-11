@@ -1,5 +1,5 @@
 <?php
-include_once ("includes/no-session.inc.php");
+include_once("includes/no-session.inc.php");
 
 ?><!doctype html>
 <html lang="en">
@@ -16,7 +16,7 @@ include_once ("includes/no-session.inc.php");
 </head>
 <body>
 
-<?php include_once ("includes/nav.inc.php"); ?>
+<?php include_once("includes/nav.inc.php"); ?>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
