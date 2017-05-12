@@ -16,7 +16,6 @@ if (!isset($_SESSION['FirstVisit'])) {
 $email = $_SESSION['email'];
 $feed = new Feed();
 $feed->getFeed();
-
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -41,6 +40,7 @@ $feed->getFeed();
     <?php foreach ($feed->getFeed() as $f): ?>
     <div class="col-lg-3 col-md-4 col-xs-6 thumb" >
 
+
         <div class="thumbnail" >
             <a id="user" href="profile.php"><?php echo $email; ?></a >
 
@@ -48,8 +48,19 @@ $feed->getFeed();
 
             <div class="caption post-content" >
                 <div class="reactions" >
-                    <p id = "likes" ><span class="glyphicon glyphicon-thumbs-up" aria - hidden = "true" ></span > 15</p >
-                    <p id = "dislikes" ><span class="glyphicon glyphicon-thumbs-down" aria - hidden = "true" ></span > 15</p >
+
+                    <form action="post">
+
+                        <input type="text" id = "likes" value="<?php echo  $feed->countLikes($f["id"]) ?>" <!-- hoe vaak komt hij post ID tegen in likes tabel - dit telt hij op -->
+
+
+
+                        <input type="button" class="glyphicon glyphicon-thumbs-up" onclick="toggleLike('<?php echo $f['id']; ?>')" value=" <?php $feed->check($f["id"], $_SESSION['id']); ?>" />
+
+
+                    </form>
+
+
                 </div >
 
                 <p><?php echo $f['description']; ?></p>
@@ -64,6 +75,6 @@ $feed->getFeed();
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="js/like.js"></script>
 </body>
 </html>

@@ -50,6 +50,8 @@ class Post
         $statement->bindValue(":description", $html->find('img', 0));
     }
 
+
+
     public function savePost($p_iUserid)
     {
 
