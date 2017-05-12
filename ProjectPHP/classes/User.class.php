@@ -68,7 +68,6 @@
             $statement->execute();
 
             $_SESSION['email'] = $this->getEmail();
-
         }
 
         public function Login()

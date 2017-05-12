@@ -30,7 +30,7 @@ class Feed
     {
         global $conn;
 
-        $statement = $conn->prepare("select * from posts limit 20");
+        $statement = $conn->prepare("select * from posts limit 5");
         $statement->execute();
 
         $this->m_sResult = $statement->fetchAll();

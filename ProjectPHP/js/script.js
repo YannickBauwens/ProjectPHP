@@ -1,34 +1,17 @@
 $(document).ready(function() {
-    $('.comment-btn-submit').click(function () {
-        console.log("comment");
-        var _postID = $(this).val();
-        var _comment = $(".commentField" + _postID).val();
-        var _userID = $(".userID").val();
-        var _userName = $(".username").val();
-        console.log(_userName);
-        var _imageID = $(".imageID" + _postID).val();
-
-        if (_comment.length > 0 && _userID != null) {
-
-            $(".commentsList" + _postID).append("<li><a href='profile.php?userID=>" + _userID + "'>" + _userName + "</a>" +
-                "<span> " + _comment + "</span></li>");
-
-
+    $('.btnLoadMore').on("click", function(){
+        for(i=0; i<20;i++){
             $.ajax({
-                type: 'POST',
-                url: 'includes/comment.inc.php',
-                data: {newComment: _comment, userID: _userID, userName: _userName, imageID: _imageID},
-                succes: function (data) {
-                    console.log(data);
+                method : 'POST',
+                url  : 'includes/loadmore.inc.php',
+                data : $(this),
+                success : function(response)
+                {
+                    console.log(response);
+                    var div = $(".indexFeed");
+                    div.html(response.message);
                 }
-
-            });
-        }
-        var _comment = $('.commentField').val("");
-
+            });}
         return false;
-        e.preventDefault();
-
     });
-
 });
