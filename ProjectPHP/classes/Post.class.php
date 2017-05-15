@@ -50,6 +50,8 @@ class Post
         $statement->bindValue(":description", $html->find('img', 0));
     }
 
+
+
     public function savePost($p_iUserid)
     {
 
@@ -80,8 +82,9 @@ class Post
             //in upload.php wordt de user id uit de session gehaaldd en meegegeven met de savepos functie als parameter
             $statement->bindValue(":fk_userid", $p_iUserid);
 
+
             if ($statement->execute()) {
-                echo "Je post is met succes geuploqd";
+                echo "Je post is met succes geupload";
             } else {
                 echo "Helaas er ging iets mis";
             }
