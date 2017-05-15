@@ -20,7 +20,11 @@ if ($check === "Like") {
     $statement->bindValue(":lastname", $_SESSION['id']);
     $statement->execute();
 
+    $number =  $feed->countLikes($_POST['postID']);
+
+
     $response["status"] = "hooray";
+    $response["number"] = $number;
 
 
 } else {
@@ -32,10 +36,12 @@ if ($check === "Like") {
     $statement->bindValue(":lastname", $_SESSION['id']);
     $statement->execute();
 
+    $number =  $feed->countLikes($_POST['postID']);
+
+
     $response["status"] = "bummer";
+    $response["number"] = $number;
 }
 
 header('Content-type: application/json');
 echo json_encode($response);
-
-?>

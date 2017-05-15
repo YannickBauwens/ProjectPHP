@@ -53,12 +53,12 @@ $feed->getFeed();
 
                         <?php $numberoflikes = $feed->countLikes($f["id"])?>
 
-                        <input type="text" id = "likes" value="<?php echo $numberoflikes  ?>" <!-- hoe vaak komt hij post ID tegen in likes tabel - dit telt hij op -->
+                        <input type="text" id = "likes<?php echo $f['id'] ?>" value="<?php echo $numberoflikes  ?>" <!-- hoe vaak komt hij post ID tegen in likes tabel - dit telt hij op -->
 
 
 
 
-                        <input id="likeButton<?php echo $f['id'] ?>" type="button" class="glyphicon glyphicon-thumbs-up" onclick="toggleLike('<?php echo $f['id']; ?>', <?php echo $numberoflikes; ?>)" value=" <?= $feed->check($f["id"], $_SESSION['id']); ?>" />
+                        <input id="likeButton<?php echo $f['id'] ?>" type="button" class="glyphicon glyphicon-thumbs-up" onclick="toggleLike('<?php echo $f['id']; ?>')" value="<?= $feed->check($f["id"], $_SESSION['id']); ?>" />
 
 
 
@@ -80,7 +80,7 @@ $feed->getFeed();
     <button class="btnLoadMore">Load more</button>
     
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/like.js"></script>
 
