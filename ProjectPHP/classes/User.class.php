@@ -46,7 +46,7 @@
 
         public function setPassword($m_sPassword)
         {
-                $this->m_sPassword = $m_sPassword;
+            $this->m_sPassword = $m_sPassword;
         }
 
         public function Register()
@@ -62,19 +62,19 @@
 
             $statement = $conn->prepare("INSERT INTO User(firstname, lastname, email, password) 
                                          VALUES (:firstname, :lastname, :email, :password)");
-            $statement->bindValue(":firstname", $this->getFirstname());
-            $statement->bindValue(":lastname", $this->getLastname());
-            $statement->bindValue(":email", $this->getEmail());
-            $statement->bindValue(":password", $this->getPassword());
+                $statement->bindValue(":firstname", $this->getFirstname());
+                $statement->bindValue(":lastname", $this->getLastname());
+                $statement->bindValue(":email", $this->getEmail());
+                $statement->bindValue(":password", $this->getPassword());
 
-            $options = [
+                $options = [
                 'cost'=> 12
             ];
-            $password = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
-            $statement->bindValue(":password", $password);
-            $statement->execute();
+                $password = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
+                $statement->bindValue(":password", $password);
+                $statement->execute();
 
-            $_SESSION['email'] = $this->getEmail();
+                $_SESSION['email'] = $this->getEmail();
             } else { //else return error
                 throw new \Exception("This email is already in use");
             }

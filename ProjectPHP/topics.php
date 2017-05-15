@@ -34,7 +34,7 @@ if (!empty($_POST)) {
 <form action="" action="post">
     <select multiple class="thumbnail" name="topic" id="topic">
         <?php foreach ($topic->getResult() as $t): ?>
-            <option value=""><?php echo $t['name']; ?></option>
+            <option value=""><?php echo htmlspecialchars($t['name']); ?></option>
         <?php endforeach; ?>
     </select>
     <button type="submit">Save topics</button>

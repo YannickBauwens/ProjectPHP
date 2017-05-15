@@ -24,16 +24,15 @@ $email = $_SESSION['email'];
         }
     }*/
 
-    if(!empty($_GET)) {
+    if (!empty($_GET)) {
         $searchKeyword = $_GET['txtSearch'];
         $feed = new Feed();
-        try{
+        try {
             $feed->setKeyword($txtSearch);
             $feed->search();
         } catch (Exception $e) {
             $e->getMessage();
         }
-
     }
 
 ?><!doctype html>
@@ -57,16 +56,16 @@ $email = $_SESSION['email'];
 <?php include_once("includes/nav.inc.php"); ?>
 
 <p><?php if (isset($e)) {
-    echo $e;
+    echo htmlspecialchars($e);
 } ?></p>
 
 <?php foreach ($results->getResult() as $result): ?>
     <div class="col-lg-3 col-md-4 col-xs-6 thumb" >
 
         <div class="thumbnail" >
-            <a id="user" href="index.php"><?php echo $email; ?></a >
+            <a id="user" href="index.php"><?php echo htmlspecialchars($email); ?></a >
 
-            <a href="index.php"><img src="<?php echo $result['image'] ?>" alt="img"></a>
+            <a href="index.php"><img src="<?php echo htmlspecialchars($result['image']) ?>" alt="img"></a>
 
             <div class="caption post-content" >
                 <div class="reactions" >
@@ -74,7 +73,7 @@ $email = $_SESSION['email'];
                     <p id = "dislikes" ><span class="glyphicon glyphicon-thumbs-down" aria - hidden = "true" ></span > 15</p >
                 </div >
 
-                <p><?php echo $result['description']; ?></p>
+                <p><?php echo htmlspecialchars($result['description']); ?></p>
 
             </div>
 

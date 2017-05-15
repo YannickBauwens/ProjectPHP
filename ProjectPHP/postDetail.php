@@ -27,21 +27,21 @@ $email = $_SESSION['email'];
 
 
     <div class="thumbnail" >
-        <a id="user" href="profile.php"><?php echo $email; ?></a >
+        <a id="user" href="profile.php"><?php echo htmlspecialchars($email); ?></a >
 
-        <img src="<?php echo ['image'] ?>" alt="img">
+        <img src="<?php echo htmlspecialchars(['image']) ?>" alt="img">
 
         <div class="caption post-content" >
             <div class="reactions" >
 
                 <form action="post">
 
-                    <input type="text" id = "likes" value="<?php echo  $feed->countLikes($f["id"]) ?>" <!-- hoe vaak komt hij post ID tegen in likes tabel - dit telt hij op -->
+                    <input type="text" id = "likes" value="<?php echo  htmlspecialchars($feed->countLikes($f["id"])) ?>" <!-- hoe vaak komt hij post ID tegen in likes tabel - dit telt hij op -->
 
 
 
 
-                    <input type="button" class="glyphicon glyphicon-thumbs-up" onclick="toggleLike('<?php echo $f['id']; ?>')" value=" <?= $feed->check($f["id"], $_SESSION['id']); ?>" />
+                    <input type="button" class="glyphicon glyphicon-thumbs-up" onclick="toggleLike('<?php echo htmlspecialchars($f['id']); ?>')" value=" <?= $feed->check($f["id"], $_SESSION['id']); ?>" />
 
 
                 </form>
@@ -49,7 +49,7 @@ $email = $_SESSION['email'];
 
             </div >
 
-            <p><?php echo $f['description']; ?></p>
+            <p><?php echo htmlspecialchars($f['description']); ?></p>
 
         </div>
 

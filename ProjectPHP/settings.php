@@ -52,27 +52,27 @@
                     You have unsaved changes. Be sure to save this form before leaving.
                 </div>
                 <?php if (!empty($_POST) && $user->showFeedback()): ?>
-                    <?php echo $user->showFeedback(); ?>
+                    <?php echo htmlspecialchars($user->showFeedback()); ?>
                 <?php endif; ?>
     
                 <form action="" method="post" enctype="multipart/form-data">
                     <h3 class="h3Settings">Personal data</h3>
                     <div class="settingInput">
                         <label for="email">E-mail</label>
-                        <input type="text" name="email" placeholder="E-mail" value="<?php echo $user->Email; ?>" class="form-control">
+                        <input type="text" name="email" placeholder="E-mail" value="<?php echo htmlspecialchars($user->Email); ?>" class="form-control">
 
                         <label for="firstname">Firstname</label>
-                        <input type="text" name="firstname" placeholder="Firstname" value="<?php echo $user->Firstname; ?>" class="form-control">
+                        <input type="text" name="firstname" placeholder="Firstname" value="<?php echo htmlspecialchars($user->Firstname); ?>" class="form-control">
 
                         <label for="lastname">Lastname</label>
-                        <input type="text" name="lastname" placeholder="Lastname" value="<?php echo $user->Lastname; ?>" class="form-control">
+                        <input type="text" name="lastname" placeholder="Lastname" value="<?php echo htmlspecialchars($user->Lastname); ?>" class="form-control">
 
                         <label for="username">Username</label>
-                        <input type="text" name="username" placeholder="Username" value="<?php echo $user->Username; ?>" class="form-control">
+                        <input type="text" name="username" placeholder="Username" value="<?php echo htmlspecialchars($user->Username); ?>" class="form-control">
                     </div>
                    
                     
-                    <img src="../public/users/<?php echo $user->Avatar; ?>.png" class="profile-picture" id="profpic">
+                    <img src="../public/users/<?php echo htmlspecialchars($user->Avatar); ?>.png" class="profile-picture" id="profpic">
                     <label for="profilePicture">Profile picture</label>
                     <input type="file" name="profilePicture" id="profilePicture">
 

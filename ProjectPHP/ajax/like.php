@@ -25,10 +25,7 @@ if ($check === "Like") {
 
     $response["status"] = "hooray";
     $response["number"] = $number;
-
-
 } else {
-
     $conn = new PDO('mysql:host=localhost;dbname=IMDterest', "root", "");
 
     $statement = $conn->prepare("DELETE FROM likes WHERE (FK_posts = :firstname AND FK_userid =  :lastname)");

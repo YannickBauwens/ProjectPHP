@@ -27,7 +27,7 @@
                 header('Location: login.php');
             }
         //}
-    }/*catch (Exception $e)
+        }/*catch (Exception $e)
     {
         $error = $e->getMessage();
     }*/

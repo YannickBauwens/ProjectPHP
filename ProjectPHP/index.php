@@ -45,9 +45,9 @@ $feed->getFeed();
 
 
         <div class="thumbnail">
-            <a id="user" href="profile.php?user=<?php echo $f['FK_userid'] ?>"><?php echo $email; ?></a>
+            <a id="user" href="profile.php?user=<?php echo htmlspecialchars($f['FK_userid']) ?>"><?php echo htmlspecialchars($email); ?></a>
 
-            <a href="postDetail.php?post=<?php echo $f['id'] ?>"><img src="<?php echo $f['image'] ?>" alt="img"></a>
+            <a href="postDetail.php?post=<?php echo htmlspecialchars($f['id']) ?>"><img src="<?php echo htmlspecialchars($f['image']) ?>" alt="img"></a>
 
             <div class="caption post-content">
                 <div class="reactions">
@@ -56,11 +56,11 @@ $feed->getFeed();
 
                         <?php $numberoflikes = $feed->countLikes($f["id"]) ?>
 
-                        <input type="text" id="likes<?php echo $f['id'] ?>" value="<?php echo $numberoflikes ?>"
+                        <input type="text" id="likes<?php echo htmlspecialchars($f['id']) ?>" value="<?php echo htmlspecialchars($numberoflikes) ?>"
                         <!-- hoe vaak komt hij post ID tegen in likes tabel - dit telt hij op -->
 
 
-                        <input id="likeButton<?php echo $f['id'] ?>" type="button" class="glyphicon glyphicon-thumbs-up"
+                        <input id="likeButton<?php echo htmlspecialchars($f['id']) ?>" type="button" class="glyphicon glyphicon-thumbs-up"
                                onclick="toggleLike('<?php echo $f['id']; ?>')"
                                value="<?= $feed->check($f["id"], $_SESSION['id']); ?>"/>
 
@@ -70,7 +70,7 @@ $feed->getFeed();
 
                 </div>
 
-                <p><?php echo $f['description']; ?></p>
+                <p><?php echo htmlspecialchars($f['description']); ?></p>
 
             </div>
 

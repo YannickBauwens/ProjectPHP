@@ -10,10 +10,9 @@ $statement = $conn->prepare("select * from posts limit :result,  5");
 $statement->bindValue(":result", $_POST['getresult']);
 $statement->execute();
 
-while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-{
+while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     echo"   
-        <img src='".$row['image']."' alt='img'>
-        <p>".$row['description']."</p>
+        <img src='".mysqli_real_escape_string($row['image'])."' alt='img'>
+        <p>".mysqli_real_escape_string($row['description'])."</p>
     ";
 }
