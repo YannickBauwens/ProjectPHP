@@ -1,12 +1,13 @@
 <?php
 
 //include_once("includes/db.inc.php");
-include_once ("Db.class.php");
+include_once("Db.class.php");
 
 class Feed
 {
     private $m_iUserID;
     private $m_sResult;
+
     public function getUserID()
     {
         return $this->m_iUserID;
@@ -37,7 +38,8 @@ class Feed
     {
         global $conn;
 
-        $statement = $conn->prepare("select * from posts WHERE FK_userid = $p_userID ");
+        $statement = $conn->prepare("select * from posts WHERE FK_userid = :userID ");
+        $statement->bindValue(":userID", $p_userID);
         $statement->execute();
 
         $this->m_sResult = $statement->fetchAll();
@@ -47,40 +49,51 @@ class Feed
 
 
 
-    public function countLikes($p_postid){
-
+    public function countLikes($p_postid)
+    {
         $conn = new PDO("mysql:host=localhost;dbname=IMDterest", "root", "");
 
-        $statement = $conn->prepare("select * from Likes WHERE FK_posts = $p_postid"  );
+        $statement = $conn->prepare("select * from Likes WHERE FK_posts = :postID");
+        $statement->bindValue(":postID", $p_postid);
         $statement->execute();
         $arr = $statement->fetchAll();
         $number = count($arr);
         return $number;
-
     }
 
-    public function check($postid, $p_userid) {
+    public function check($postid, $p_userid)
+    {
         $conn = new PDO("mysql:host=localhost;dbname=IMDterest", "root", "");
 
         $liked = "Unlike";
         $unliked = "Like";
 
 
-        $statement = $conn->prepare("select * from likes WHERE FK_posts = $postid AND FK_userid = $p_userid");
+        $statement = $conn->prepare("select * from likes WHERE FK_posts = :postID AND FK_userid = :userID");
+        $statement->bindValue("postID", $postid);
+        $statement->bindValue("userID", $p_userid);
         $statement->execute();
         $arr =  $statement->fetchAll();
 
-        if(!empty($arr)){
-
+        if (!empty($arr)) {
             return $liked;
-
-        }else
-        {
-
+        } else {
             return $unliked;
-
         }
-
     }
 
+    public function search()
+    {
+        global $conn;
+        
+        $statement = $conn->prepare("SELECT * FROM posts WHERE description LIKE :keywords");
+        $statement->bindValue(':keywords', $this->getKeyword());
+        $statement->execute();
+
+        if ($statement->rowCount() >= 1) {
+            return $this->m_sResult = $statement->fetchAll();
+        } else {
+            throw new Exception("No matching results.");
+        }
+    }
 }

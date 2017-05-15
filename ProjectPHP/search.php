@@ -2,10 +2,11 @@
 include_once('includes/no-session.inc.php');
 include_once('includes/db.inc.php');
 include_once('classes/Post.class.php');
+include_once('classes/Feed.class.php');
 
 $email = $_SESSION['email'];
 
-    if (isset($_GET['txtSearch'])) {
+    /*if (isset($_GET['txtSearch'])) {
         $searchKeyword = $_GET['txtSearch'];
         $results = array();
         $statement = $conn->prepare("SELECT *
@@ -21,6 +22,18 @@ $email = $_SESSION['email'];
         } else {
             $errorMessage = "No matching results with: ".$_GET['txtSearch'];
         }
+    }*/
+
+    if(!empty($_GET)) {
+        $searchKeyword = $_GET['txtSearch'];
+        $feed = new Feed();
+        try{
+            $feed->setKeyword($txtSearch);
+            $feed->search();
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+
     }
 
 ?><!doctype html>
@@ -43,11 +56,11 @@ $email = $_SESSION['email'];
 
 <?php include_once("includes/nav.inc.php"); ?>
 
-<p><?php if (isset($$errorMessage)) {
-    echo $errorMessage;
+<p><?php if (isset($e)) {
+    echo $e;
 } ?></p>
 
-<?php foreach ($results as $result): ?>
+<?php foreach ($results->getResult() as $result): ?>
     <div class="col-lg-3 col-md-4 col-xs-6 thumb" >
 
         <div class="thumbnail" >

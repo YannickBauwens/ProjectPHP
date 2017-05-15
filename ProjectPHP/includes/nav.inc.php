@@ -17,7 +17,7 @@
                     <input id="txtSearch" name="txtSearch" type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
-                <button><a class="glyphicon glyphicon-plus" href="upload.php"></a></button>
+                <a class="glyphicon glyphicon-plus" href="upload.php"></a>
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="profile.php"><?php echo $_SESSION['email']; ?></a></li>

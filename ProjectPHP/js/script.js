@@ -3,10 +3,8 @@ $(document).ready(function() {
         var val = document.getElementById("result_no").value;
         $.ajax({
             type: 'post',
-            url: 'loadmore.inc.php',
-            data: {
-                getresult:val
-            },
+            url: 'loadmore.php',
+            data: { getresult:val },
             success: function(response){
                 console.log(response);
                 var content = document.getElementById("responseContainer");

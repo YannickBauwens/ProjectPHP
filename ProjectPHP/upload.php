@@ -37,10 +37,9 @@ if (!empty($_POST)) {
 
 <body>
 
+<?php include_once("includes/nav.inc.php"); ?>
+
 <div>
-    <div>
-        <a href="index.php">Logo</a>
-    </div>
     <h2>Upload an image</h2>
     <div>
         <form action="" method="post" enctype="multipart/form-data">
