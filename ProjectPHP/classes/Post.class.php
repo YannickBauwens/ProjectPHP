@@ -84,7 +84,7 @@ class Post
 
 
             if ($statement->execute()) {
-                echo "Je post is met succes geuploqd";
+                echo "Je post is met succes geupload";
             } else {
                 echo "Helaas er ging iets mis";
             }

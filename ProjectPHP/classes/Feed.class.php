@@ -38,6 +38,20 @@ class Feed
     }
 
 
+    public function getProfileFeed()
+    {
+        global $conn;
+
+        $statement = $conn->prepare("select * from posts WHERE ");
+        $statement->execute();
+
+        $this->m_sResult = $statement->fetchAll();
+        return $this->m_sResult;
+    }
+
+
+
+
     public function countLikes($p_postid){
 
         $conn = new PDO("mysql:host=localhost;dbname=IMDterest", "root", "");
@@ -53,19 +67,22 @@ class Feed
     public function check($postid, $p_userid) {
         $conn = new PDO("mysql:host=localhost;dbname=IMDterest", "root", "");
 
+        $liked = "Not empty";
+        $unliked = "Like";
+
 
         $statement = $conn->prepare("select * from likes WHERE FK_posts = $postid AND FK_userid = $p_userid");
         $statement->execute();
         $arr =  $statement->fetchAll();
 
         if(!empty($arr)){
-            echo "not empty";
-            return "Unlike";
+
+            return $liked;
 
         }else
         {
-            echo "empty";
-            return "Like";
+
+            return $unliked;
 
         }
 

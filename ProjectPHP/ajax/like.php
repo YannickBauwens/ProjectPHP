@@ -20,14 +20,14 @@ if ($check === "Like") {
     $statement->bindValue(":lastname", $_SESSION['id']);
     $statement->execute();
 
-    $response["status"] = "jeee";
+    $response["status"] = "hooray";
+
 
 } else {
 
     $conn = new PDO('mysql:host=localhost;dbname=IMDterest', "root", "");
 
-    $statement = $conn->prepare("DELETE FROM likes (FK_posts, FK_userid)
-                                         WHERE (FK_posts = :firstname AND FK_userid =  :lastname)");
+    $statement = $conn->prepare("DELETE FROM likes WHERE (FK_posts = :firstname AND FK_userid =  :lastname)");
     $statement->bindValue(":firstname", $_POST['postID']);
     $statement->bindValue(":lastname", $_SESSION['id']);
     $statement->execute();
@@ -35,6 +35,7 @@ if ($check === "Like") {
     $response["status"] = "bummer";
 }
 
+header('Content-type: application/json');
 echo json_encode($response);
 
 ?>

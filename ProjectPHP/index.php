@@ -44,18 +44,22 @@ $feed->getFeed();
         <div class="thumbnail" >
             <a id="user" href="profile.php"><?php echo $email; ?></a >
 
-            <a href="postDetail.php"><img src="<?php echo $f['image'] ?>" alt="img"></a>
+            <a href="postDetail.php?post=<?php echo $f['id'] ?>"><img src="<?php echo $f['image'] ?>" alt="img"></a>
 
             <div class="caption post-content" >
                 <div class="reactions" >
 
                     <form action="post">
 
-                        <input type="text" id = "likes" value="<?php echo  $feed->countLikes($f["id"]) ?>" <!-- hoe vaak komt hij post ID tegen in likes tabel - dit telt hij op -->
+                        <?php $numberoflikes = $feed->countLikes($f["id"])?>
+
+                        <input type="text" id = "likes" value="<?php echo $numberoflikes  ?>" <!-- hoe vaak komt hij post ID tegen in likes tabel - dit telt hij op -->
 
 
 
-                        <input type="button" class="glyphicon glyphicon-thumbs-up" onclick="toggleLike('<?php echo $f['id']; ?>')" value=" <?php $feed->check($f["id"], $_SESSION['id']); ?>" />
+
+                        <input id="likeButton<?php echo $f['id'] ?>" type="button" class="glyphicon glyphicon-thumbs-up" onclick="toggleLike('<?php echo $f['id']; ?>', <?php echo $numberoflikes; ?>)" value=" <?= $feed->check($f["id"], $_SESSION['id']); ?>" />
+
 
 
                     </form>
