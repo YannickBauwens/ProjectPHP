@@ -46,12 +46,19 @@
 
         public function setPassword($m_sPassword)
         {
-            $this->m_sPassword = $m_sPassword;
+                $this->m_sPassword = $m_sPassword;
         }
 
         public function Register()
         {
             global $conn;
+
+            $statementCheck = $conn->prepare("SELECT * FROM users WHERE email = :email;");
+            $statementCheck->bindValue(":email", $this->getEmail());
+            $statementCheck->execute();
+            $row = $statementCheck->fetch(\PDO::FETCH_ASSOC);
+
+            if (!$row) { // if query returns no rows add new user
 
             $statement = $conn->prepare("INSERT INTO User(firstname, lastname, email, password) 
                                          VALUES (:firstname, :lastname, :email, :password)");
@@ -68,6 +75,9 @@
             $statement->execute();
 
             $_SESSION['email'] = $this->getEmail();
+            } else { //else return error
+                throw new \Exception("This email is already in use");
+            }
         }
 
         public function Login()
@@ -80,7 +90,6 @@
             $statement->execute(array( ":email"=>$this->getEmail() ));
 
             if ($statement->rowCount() == 1) {
-                echo "inloggen lukt";
                 $currentUser = $statement->fetch(PDO::FETCH_ASSOC);
                 $hash = $currentUser['password'];
                 $_SESSION['email'] = $currentUser['email'];
@@ -92,8 +101,6 @@
                 } else {
                     return false;
                 }
-            } else {
-                echo "inloggen kan niet";
             }
         }
 

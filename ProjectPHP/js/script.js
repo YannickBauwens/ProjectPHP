@@ -1,17 +1,19 @@
 $(document).ready(function() {
     $('.btnLoadMore').on("click", function(){
-        for(i=0; i<20;i++){
-            $.ajax({
-                method : 'POST',
-                url  : 'includes/loadmore.inc.php',
-                data : $(this),
-                success : function(response)
-                {
-                    console.log(response);
-                    var div = $(".indexFeed");
-                    div.html(response.message);
-                }
-            });}
-        return false;
+        var val = document.getElementById("result_no").value;
+        $.ajax({
+            type: 'post',
+            url: 'loadmore.inc.php',
+            data: {
+                getresult:val
+            },
+            success: function(response){
+                console.log(response);
+                var content = document.getElementById("responseContainer");
+                content.inner = content.innerHTML+response;
+                document.getElementById("result_no").value = Number(val)+1;
+            }
+        })
     });
 });
+

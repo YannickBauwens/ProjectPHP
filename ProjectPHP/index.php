@@ -38,7 +38,7 @@ $feed->getFeed();
     <h1>IMDterest</h1>
 
     <?php foreach ($feed->getFeed() as $f): ?>
-    <div class="col-lg-3 col-md-4 col-xs-6 thumb" >
+    <div id="responseContainer" class="col-lg-3 col-md-4 col-xs-6 thumb" >
 
 
         <div class="thumbnail" >
@@ -76,8 +76,8 @@ $feed->getFeed();
     </div >
     <?php endforeach; ?>
 
+    <input type="hidden" id="result_no" value="1">
     <button class="btnLoadMore">Load more</button>
-    <div class="indexFeed"></div>
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
