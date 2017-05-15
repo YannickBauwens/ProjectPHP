@@ -41,22 +41,21 @@ if (!empty($_POST)) {
     <div>
         <a href="index.php">Logo</a>
     </div>
-    <h2>Upload an image</h2>
-    <div>
-        <form action="" method="post" enctype="multipart/form-data">
-            <input type="file"  name="fileToUpload" id="fileToUpload" />
 
-            <input type="text" name="url" id="url"><br>
 
-            <label for="description">Description:</label>
-            <br>
-            <textarea id="description" rows="5" cols="40" name="description"></textarea>
-            <br />
-
-            <input type="submit" name="submit" value="Upload Now!" />
-        </form>
-
-    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Upload an image</h3>
+        </div>
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Panel title</h3>
+                </div>
+                <div class="panel-body">
+                    Panel content
+                </div>
+        </div>
 </div>
 </body>
 </html>

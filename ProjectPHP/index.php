@@ -4,8 +4,6 @@ include_once("includes/no-session.inc.php");
 include_once("classes/Feed.class.php");
 include_once("classes/User.class.php");
 
-session_start();
-
 /*
 
 if (!isset($_SESSION['FirstVisit'])) {
@@ -27,7 +25,7 @@ $feed->getFeed();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IMDterest</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

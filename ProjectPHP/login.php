@@ -38,24 +38,33 @@
 </head>
 <body>
 
-    <h1>Login</h1>
 
-    <form action="" method="post">
-        <label for="email">email</label>
-        <input type="text" name="email" id="email">
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
 
-        <button type="submit">Login</button>
 
-        <?php
-        if (isset($error)) {
-            echo "<p class='error'>$error</p>";
-        }
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Log in</h3>
+        </div>
+        <div class="panel-body">
+            <form action="" method="post">
+                <label for="email">email</label>
+                <input type="text" name="email" id="email"></br>
 
-        ?>
-    </form>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password"></br>
+
+                <button type="submit">Login</button>
+
+                <?php
+                if (isset($error)) {
+                    echo "<p class='error'>$error</p>";
+                }
+
+                ?>
+            </form>
+
+        </div>
 
 </body>
 </html>
