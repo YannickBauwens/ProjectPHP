@@ -3,7 +3,8 @@
     include_once("includes/no-session.inc.php");
     include_once("includes/nav.inc.php");
 
-
+$feed = new getProfileFeed();
+$feed->getProfileFeed();
 
 ?>
 <!DOCTYPE html>

@@ -4,7 +4,7 @@ include_once("classes/Feed.class.php");
 include_once("classes/User.class.php");
 
 $email = $_SESSION['email'];
-$postID = $_GET[''];
+
 
 ?><!doctype html>
 <html lang="en">

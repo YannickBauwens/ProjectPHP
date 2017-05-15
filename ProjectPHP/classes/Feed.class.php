@@ -33,11 +33,11 @@ class Feed
     }
 
 
-    public function getProfileFeed()
+    public function getProfileFeed($p_userID)
     {
         global $conn;
 
-        $statement = $conn->prepare("select * from posts WHERE ");
+        $statement = $conn->prepare("select * from posts WHERE FK_userid = $p_userID ");
         $statement->execute();
 
         $this->m_sResult = $statement->fetchAll();

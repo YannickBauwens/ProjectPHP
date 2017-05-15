@@ -47,34 +47,45 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <h1>Register</h1>
 
-    <form action="" method="post">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Register</h3>
+    </div>
+    <div class="panel-body">
+        <form action="" method="post">
 
-        <div>
-            <?php
-            if (isset($error)) {
-                echo "<p class='error'>$errorMessage</p>";
-            }
-            ?>
-        </div>
+            <div>
+                <?php
+                if (isset($error)) {
+                    echo "<p class='error'>$errorMessage</p>";
+                }
+                ?>
+            </div>
 
-        <label for="firstname">Firstname</label>
-        <input type="text" name="firstname" id="firstname">
+            <label for="firstname">Firstname</label>
+            <input type="text" name="firstname" id="firstname"> </br>
 
-        <label for="lastname">Lastname</label>
-        <input type="text" name="lastname" id="lastname">
+            <label for="lastname">Lastname</label>
+            <input type="text" name="lastname" id="lastname"></br>
 
-        <label for="email">email</label>
-        <input type="text" name="email" id="email">
+            <label for="email">email</label>
+            <input type="text" name="email" id="email"></br>
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password"></br>
 
-        <button type="submit">Register</button>
-    </form>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+
+
+
+
 </body>
 </html>
