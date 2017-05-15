@@ -1,31 +1,36 @@
 <?php
     include_once("classes/User.class.php");
 
-    if (!empty($_POST)) {
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+    /*try{*/
+        if (!empty($_POST)) {
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen(trim($firstname)) === 0 || strlen(trim($lastname)) === 0 || strlen(trim($password)) === 0) {
-            $errorMessage = "Please fill in all fields.";
-            $error = true;
-        } else {
-            $errorMessage = "";
-            $error = false;
-        }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen(trim($firstname)) === 0 || strlen(trim($lastname)) === 0 || strlen(trim($password)) === 0) {
+                $errorMessage = "Please fill in all fields.";
+                $error = true;
+            } else {
+                $errorMessage = "";
+                $error = false;
+            }
 
-        if ($error == false) {
-            $user = new User();
-            $user->setFirstname($firstname);
-            $user->setLastname($lastname);
-            $user->setEmail($email);
-            $user->setPassword($password);
-            $user->Register();
+            if ($error == false) {
+                $user = new User();
+                $user->setFirstname($firstname);
+                $user->setLastname($lastname);
+                $user->setEmail($email);
+                $user->setPassword($password);
+                $user->Register();
 
-            header('Location: login.php');
-        }
-    }
+                header('Location: login.php');
+            }
+        //}
+    }/*catch (Exception $e)
+    {
+        $error = $e->getMessage();
+    }*/
 
 ?><!doctype html>
 <html lang="en">
